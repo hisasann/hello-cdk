@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Lambda Stack 1`] = `
+Object {
+  "Parameters": Object {
+    "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aArtifactHash6F377730": Object {
+      "Description": "Artifact hash for asset \\"ca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8a\\"",
+      "Type": "String",
+    },
+    "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aS3BucketBB211913": Object {
+      "Description": "S3 bucket for asset \\"ca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8a\\"",
+      "Type": "String",
+    },
+    "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aS3VersionKeyBF858B89": Object {
+      "Description": "S3 key for asset version \\"ca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8a\\"",
+      "Type": "String",
+    },
+  },
+  "Resources": Object {
+    "myfunctionDF753486": Object {
+      "DependsOn": Array [
+        "myfunctionServiceRole41691664",
+      ],
+      "Properties": Object {
+        "Code": Object {
+          "S3Bucket": Object {
+            "Ref": "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aS3BucketBB211913",
+          },
+          "S3Key": Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                Object {
+                  "Fn::Select": Array [
+                    0,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aS3VersionKeyBF858B89",
+                        },
+                      ],
+                    },
+                  ],
+                },
+                Object {
+                  "Fn::Select": Array [
+                    1,
+                    Object {
+                      "Fn::Split": Array [
+                        "||",
+                        Object {
+                          "Ref": "AssetParametersca7771f50dc84a4bc7d28696da8adf3cf326584d6cf2d388d270e96edf209d8aS3VersionKeyBF858B89",
+                        },
+                      ],
+                    },
+                  ],
+                },
+              ],
+            ],
+          },
+        },
+        "FunctionName": "my-function",
+        "Handler": "hello-cdk.handler",
+        "Role": Object {
+          "Fn::GetAtt": Array [
+            "myfunctionServiceRole41691664",
+            "Arn",
+          ],
+        },
+        "Runtime": "nodejs12.x",
+        "Timeout": 300,
+      },
+      "Type": "AWS::Lambda::Function",
+    },
+    "myfunctionServiceRole41691664": Object {
+      "Properties": Object {
+        "AssumeRolePolicyDocument": Object {
+          "Statement": Array [
+            Object {
+              "Action": "sts:AssumeRole",
+              "Effect": "Allow",
+              "Principal": Object {
+                "Service": "lambda.amazonaws.com",
+              },
+            },
+          ],
+          "Version": "2012-10-17",
+        },
+        "ManagedPolicyArns": Array [
+          Object {
+            "Fn::Join": Array [
+              "",
+              Array [
+                "arn:",
+                Object {
+                  "Ref": "AWS::Partition",
+                },
+                ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole",
+              ],
+            ],
+          },
+        ],
+      },
+      "Type": "AWS::IAM::Role",
+    },
+  },
+}
+`;
