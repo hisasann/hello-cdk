@@ -34,6 +34,18 @@ $ npm run test
 $ npx jest --updateSnapshot
 ```
 
+## 参考記事
+
+[AWS CDKに求められるテストとその方法 | Developers.IO](https://dev.classmethod.jp/articles/awscdk-snapshot-test/)
+
+[今更ながらAWS CDKを使ってみた - Qiita](https://qiita.com/kter/items/f198c73a2af9c37da050)
+
+[AWS CDK が GA! さっそく TypeScript でサーバーレスアプリケーションを構築するぜ【 Cloud Development Kit 】 | Developers.IO](https://dev.classmethod.jp/articles/aws-cdk-ga-serverless-application/) 
+
+[AWS CDKでLambdaデプロイしてみた【AWS CDK】 - Qiita](https://qiita.com/KsntsTt/items/4824bacf80d2f500f837)
+
+[AWS CDK(Cloud Development Kit )を使用した各種のLambda設置 | Developers.IO](https://dev.classmethod.jp/articles/aws-cdk-lambda/)
+
 This is a blank project for TypeScript development with CDK.
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
